@@ -9,6 +9,7 @@ import { role } from "../utils/role";
 
 const prisma = new PrismaClient();
 
+
 export const registerUser = async(req:Request, res:Response)=>{
     try {
 
