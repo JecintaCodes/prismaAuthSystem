@@ -10,10 +10,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model authModel {
   id String @id @default(uuid())
-
 
  userName String
   email String @unique
@@ -24,9 +22,63 @@ model authModel {
   avatar String?
   avatarID String?
 
-
 verified Boolean @default(false)
 token String
 
-  createAt DateTime @default(now())
+createAt DateTime @default(now())
+post  postModel[]
 }
+
+model postModel {
+  id String @id @default(uuid())
+
+ title String
+  cost Int
+  description String
+  category String
+
+  image String?
+  imageID String?
+
+user authModel @relation(fields: [userID], references: [id])
+userID String
+
+rating Int[]
+rate Int
+createAt DateTime @default(now())
+comment  commentModel[]
+}
+
+
+model commentModel {
+  id String @id @default(uuid())
+
+ comment String
+  cost Int
+  description String
+  category String
+
+  image String?
+  imageID String?
+
+store postModel @relation(fields: [storeID], references: [id])
+storeID String
+userID String
+
+createAt DateTime @default(now())
+reply  replyModel[]
+}
+
+
+model replyModel {
+  id String @id @default(uuid())
+
+ reply String
+
+comment commentModel @relation(fields: [commentID], references: [id])
+commentID String
+
+createAt DateTime @default(now())
+
+}
+

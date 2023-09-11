@@ -4,8 +4,8 @@ env.config();
 
 cloudinary.config({
     cloud_name:process.env.CLOUDNAME!,
-    api_Key:process.env.CLOUDKEY!,
-    api_secret:process.env.CLOUDSECRET,
+    api_Key:process.env.APIkEY!,
+    api_secret:process.env. APISECRET,
     secure:true,
 })
 
